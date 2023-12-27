@@ -1,0 +1,9 @@
+{
+  "name": "etl",
+  "version": "1.0.0",
+  "description": "to extract data from etax.rd.go.th and save result in s3 bucket and load into algolia index",
+  "main": "index.js",
+  "repository": "https://github.com/hspotlight/e-tax-invoice-and-e-receipt",
+  "author": "HSpotlight (Pakawat Anekwiroj)",
+  "license": "MIT"
+}
