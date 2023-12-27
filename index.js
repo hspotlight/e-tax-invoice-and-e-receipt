@@ -11,7 +11,7 @@ const handler = async () => {
   console.log("total list from etax.rd.go.th = ", result.length);
 
   if (saveJson) {
-    fs.writeFile("data.json", JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile("output/data.json", JSON.stringify(result, null, 2), (err) => {
       if (err) {
         console.error(err);
       }
