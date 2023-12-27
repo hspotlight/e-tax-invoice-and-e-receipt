@@ -8,3 +8,6 @@ The ETL will run every 12 hr every day. (12 am and 12 pm UTC time)
 
 ## Algolia project
 The uploaded data will be prompt for query in this [UI](https://dashboard.algolia.com/interface-demos/16ce4179-4f05-40ef-9cb1-4e267297c1c6).
+
+## Development Guide
+use node version - 18.17.0 because we use node:fs for saving output
