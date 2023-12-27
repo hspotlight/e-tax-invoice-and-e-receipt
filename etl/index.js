@@ -1,3 +1,8 @@
 const { eTaxService } = require("./etaxService");
 
-eTaxService.getAllRecords().then(x => console.log(x));
+const handler = async (event, context) => {
+    const result = await eTaxService.getAllRecords();
+    console.log(result.length);
+}
+
+handler();
