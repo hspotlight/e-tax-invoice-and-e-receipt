@@ -1,8 +1,6 @@
 name: Run NPM Start Every 12 Hours
 
-on:
-  schedule:
-    - cron: '0 */12 * * *'
+on: workflow_dispatch
 
 jobs:
   run-script:
