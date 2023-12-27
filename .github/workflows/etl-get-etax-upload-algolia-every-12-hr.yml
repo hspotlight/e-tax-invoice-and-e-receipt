@@ -10,19 +10,23 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Change Directory to etl
-        run: cd etl
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '14'
 
+      - name: Change Directory to etl
+        run: cd etl
+        working-directory: ./etl
+
       - name: Install Dependencies
         run: npm install
+        working-directory: ./etl
 
       - name: Run NPM Start
         run: npm run start
+        working-directory: ./etl
+
     env:
       ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
       ALGOLIA_APPLICATION_KEY: ${{ secrets.ALGOLIA_APPLICATION_KEY }}
