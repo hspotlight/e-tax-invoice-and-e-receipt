@@ -13,9 +13,7 @@ const testSearch = () => {
 };
 
 const replaceAllObjects = (data) => {
-  index.clearObjects();
-  console.log(data[0]);
-  return index.saveObjects(data, { autoGenerateObjectIDIfNotExist: true });
+  return index.replaceAllObjects(data, { autoGenerateObjectIDIfNotExist: true });
 };
 
 const algoliaService = {

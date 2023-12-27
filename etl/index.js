@@ -2,16 +2,20 @@ require("dotenv").config();
 const { eTaxService } = require("./etaxService");
 const { algoliaService } = require("./algoliaService");
 
-const handler = async (event, context) => {
+const handler = async () => {
+  console.log("program start");
   const result = await eTaxService.getAllRecords();
-  console.log(result.length);
+  console.log("total list from etax.rd.go.th = ", result.length);
 
-  algoliaService.replaceAllObjects(result).then(({ objectIDs }) => {
-    console.log(objectIDs.length);
-    console.log("done");
-  }).catch((e) => {
-    console.log(e)
-  });
+  algoliaService
+    .replaceAllObjects(result)
+    .then(({ objectIDs }) => {
+      console.log("updated list length = ", objectIDs.length);
+      console.log("done");
+    })
+    .catch((e) => {
+      console.log("error", e);
+    });
 };
 
 handler();
