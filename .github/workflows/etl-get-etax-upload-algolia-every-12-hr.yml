@@ -1,9 +1,8 @@
-name: Run NPM Start Every 12 Hours
+name: Run ETL get e-tax data and upload to algolia every 12 Hours
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 */12 * * *'
 
 jobs:
   run-script:
