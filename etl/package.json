@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/hspotlight/e-tax-invoice-and-e-receipt",
   "author": "HSpotlight (Pakawat Anekwiroj)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "algoliasearch": "^4.22.0",
+    "axios": "^1.6.3"
+  }
 }
