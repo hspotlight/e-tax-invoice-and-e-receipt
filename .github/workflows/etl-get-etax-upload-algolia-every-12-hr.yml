@@ -1,0 +1,27 @@
+name: Run NPM Start Every 12 Hours
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run NPM Start
+        run: npm run start
+    env:
+      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+      ALGOLIA_APPLICATION_KEY: ${{ secrets.ALGOLIA_APPLICATION_KEY }}
