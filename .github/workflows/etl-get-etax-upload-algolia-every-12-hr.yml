@@ -1,6 +1,9 @@
 name: Run NPM Start Every 12 Hours
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   run-script:
