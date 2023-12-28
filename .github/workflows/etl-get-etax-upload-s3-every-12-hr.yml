@@ -32,8 +32,3 @@ jobs:
 
       - name: Deploy data.json to S3 bucket
         run: aws s3 sync ./output s3://e-tax-invoice-data --delete
-
-    env:
-      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
-      ALGOLIA_APPLICATION_KEY: ${{ secrets.ALGOLIA_APPLICATION_KEY }}
-      SAVE_JSON: true
