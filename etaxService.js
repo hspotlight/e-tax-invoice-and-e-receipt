@@ -1,28 +1,53 @@
 const axios = require("axios");
+const mockData = require("./rawdata/data.json");
 const eTaxRdUrl =
-  "https://etax.rd.go.th/rd/services/rs.registeredlist/searchNew";
+  "https://efiling.rd.go.th/rd-questionnaire-service/etax/search";
 
-const eTaxApi = async (pageSize = 10) => {
+const categoryUrl =
+  "https://efiling.rd.go.th/rd-questionnaire-service/etax/search/u";
+
+const categoryApi = async (pageSize = 10) => {
+  return axios.post(categoryUrl, {}).then((r) => r.data);
+};
+
+const eTaxApi = async (pageSize = 4000) => {
   return axios
     .post(eTaxRdUrl, {
-      pageNum: 1,
-      pageSize: pageSize,
+      isic: null,
+      taxName: null,
+      taxNo: null,
+      index: 1,
+      page: pageSize,
     })
     .then((r) => r.data);
 };
 
 const getAllRecords = async () => {
-  const totalSize = (await eTaxApi()).totalsize;
-  const { data } = await eTaxApi(totalSize);
-  const result = [];
-  data.forEach((d) => {
-    result.push(d[d.length - 1]);
+  // const totalSize = 4000; // get this from the website https://efiling.rd.go.th/
+  // const { data } = await eTaxApi(totalSize);
+  const data = mockData;
+  return data.map((d) => {
+    return {
+      tax: d.nid,
+      name:
+        d.entrepreneurName && d.entrepreneurName !== "-"
+          ? d.entrepreneurName
+          : d.companyName,
+      isVat: d.vatFlag,
+      docTaxInvoiceFlag: d.docTaxInvoiceFlag,
+      docRecieptFlag: d.docTaxInvoiceFlag,
+      regisDateTh: d.regisDateTh,
+      startDateTh: d.startDateTh,
+      endDateTh: d.endDateTh,
+      isicCode: d.isicCode,
+      sourceFlag: d.sourceFlag,
+    };
   });
-  return result;
 };
 
 const eTaxService = {
   getAllRecords,
+  categoryApi,
 };
 
 exports.eTaxService = eTaxService;
