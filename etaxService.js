@@ -40,6 +40,7 @@ const getAllRecords = async () => {
       startDateTh: d.startDateTh,
       endDateTh: d.endDateTh,
       isicCode: d.isicCode,
+      isicName: d.isicName,
       sourceFlag: d.sourceFlag,
     };
   });
