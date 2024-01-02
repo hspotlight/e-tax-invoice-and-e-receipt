@@ -8,7 +8,7 @@ const handler = async () => {
   const result = await eTaxService.getAllRecords();
   console.log("total list from etax.rd.go.th = ", result.length);
 
-  fs.writeFile("output/data.json", JSON.stringify(result, null, 2), (err) => {
+  fs.writeFile("output/data.json", JSON.stringify(result), (err) => {
     if (err) {
       console.error(err);
     }
