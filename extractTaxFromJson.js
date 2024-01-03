@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 
-const inputFilePath = 'rawdata/data.json';
-const outputFilePath = 'output/only_tax_of_data.json';
+const inputFilePath = 'rawdata/data_email.json';
+const outputFilePath = 'output/data_email.json';
 
 // Read the JSON file
 fs.readFile(inputFilePath, 'utf8', (err, data) => {
@@ -15,7 +15,7 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
         const jsonData = JSON.parse(data);
 
         // Extract the 'tax' fields from each JSON object
-        const taxes = jsonData.map(item => item.nid);
+        const taxes = jsonData.map(item => item.tax);
 
         // Create a new object with only the 'tax' fields
         const onlyTaxes = { taxes };
