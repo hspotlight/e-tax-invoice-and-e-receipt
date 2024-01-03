@@ -31,7 +31,7 @@ async function scrapeData(pageNumber) {
       const record = {};
       cells.each((cellIndex, cellElement) => {
         // Process cell data as needed
-        const text = $(cellElement).text().trim();
+        const text = $(cellElement).text().trim().replace(/\s+/, "");
         if (cellIndex === 0) record["id"] = text;
         if (cellIndex === 1) record["tax"] = text;
         if (cellIndex === 2) record["name"] = text;
