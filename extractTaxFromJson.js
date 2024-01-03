@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 
 const inputFilePath = 'rawdata/data_email.json';
-const outputFilePath = 'output/data_email.json';
+const outputFilePath = 'output/only_tax_of_data_email.json';
 
 // Read the JSON file
 fs.readFile(inputFilePath, 'utf8', (err, data) => {
