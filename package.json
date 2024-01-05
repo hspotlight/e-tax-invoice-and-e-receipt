@@ -7,8 +7,8 @@
   "author": "HSpotlight (Pakawat Anekwiroj)",
   "license": "MIT",
   "scripts": {
-    "efilling": "node efillingIndex.js",
     "etax": "node etaxMain.js",
+    "efilling": "node eFillingMain.js",
     "email": "node scrapingMain.js",
     "aggregate": "node aggregateMain.js"
   },

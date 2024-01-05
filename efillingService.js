@@ -10,7 +10,7 @@ const categoryApi = async (pageSize = 10) => {
   return axios.post(categoryUrl, {}).then((r) => r.data);
 };
 
-const eTaxApi = async (pageSize = 4000) => {
+const eTaxApi = async (pageSize = 10) => {
   return axios
     .post(eTaxRdUrl, {
       isic: null,
@@ -23,9 +23,9 @@ const eTaxApi = async (pageSize = 4000) => {
 };
 
 const getAllRecords = async () => {
-  // const totalSize = 4000; // get this from the website https://efiling.rd.go.th/
-  // const { data } = await eTaxApi(totalSize);
-  const data = mockData;
+  const totalSize = +(await eTaxApi(10))[0].total;
+  const data = await eTaxApi(totalSize);
+  // const data = mockData;
   return data.map((d) => {
     return {
       tax: d.nid,
