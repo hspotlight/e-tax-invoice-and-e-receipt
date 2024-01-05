@@ -7,7 +7,9 @@
   "author": "HSpotlight (Pakawat Anekwiroj)",
   "license": "MIT",
   "scripts": {
-    "start": "node efillingIndex.js"
+    "efilling": "node efillingIndex.js",
+    "etax": "node etaxMain.js",
+    "email": "node scrapingMain.js"
   },
   "dependencies": {
     "algoliasearch": "^4.22.0",
