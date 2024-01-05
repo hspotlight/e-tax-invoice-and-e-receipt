@@ -19,8 +19,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run NPM Start
-        run: npm run start
+      - name: Run Fetch Data And Aggregate
+        run: sh fetchDataAndAggregate.sh
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
