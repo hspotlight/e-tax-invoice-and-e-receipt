@@ -47,9 +47,9 @@ const getAllRecords = async () => {
   });
 };
 
-const eTaxService = {
+const efillingService = {
   getAllRecords,
   categoryApi,
 };
 
-exports.eTaxService = eTaxService;
+exports.efillingService = efillingService;
