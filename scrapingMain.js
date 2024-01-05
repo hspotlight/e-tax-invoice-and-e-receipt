@@ -3,7 +3,6 @@ const cheerio = require("cheerio");
 const fs = require("node:fs");
 
 const base_url = "https://interapp3.rd.go.th/signed_inter/publish/register.php";
-const total_pages = 88;
 
 const rawData = [];
 
@@ -14,12 +13,14 @@ function getRandomDelay(min, max) {
 async function scrapeData(pageNumber) {
   const url = `${base_url}?page=${pageNumber}`;
 
+  let lastPage = -1;
   try {
     // Send a GET request to the URL
     const response = await axios.get(url);
 
     // Load the HTML content into cheerio
     const $ = cheerio.load(response.data);
+    lastPage = $('ul.pagination li:last-child a').text();
 
     // Locate the table and extract data
     $("table tr").each((index, element) => {
@@ -50,7 +51,8 @@ async function scrapeData(pageNumber) {
     // Generate a random delay between 300 and 1000 milliseconds
     const delay = getRandomDelay(300, 1000);
 
-    return await new Promise((resolve) => setTimeout(resolve, delay));
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    return lastPage;
   }
 }
 
@@ -66,9 +68,12 @@ function writeFile(json) {
 // Loop through all pages and scrape data
 
 async function main() {
-  for (let page = 1; page <= total_pages; page++) {
-    console.log("scraping page", page);
-    await scrapeData(page);
+  console.log('fetch page 1');
+  const lastPage = await scrapeData(1);
+  console.log('last page is ', lastPage);
+  for (let page = 2; page <= lastPage; page++) {
+    console.log('fetch page ', page);
+    await scrapeData(page)
   }
   writeFile(rawData);
 }
