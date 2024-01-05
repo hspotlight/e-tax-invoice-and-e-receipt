@@ -9,7 +9,8 @@
   "scripts": {
     "efilling": "node efillingIndex.js",
     "etax": "node etaxMain.js",
-    "email": "node scrapingMain.js"
+    "email": "node scrapingMain.js",
+    "aggregate": "node aggregateMain.js"
   },
   "dependencies": {
     "algoliasearch": "^4.22.0",
