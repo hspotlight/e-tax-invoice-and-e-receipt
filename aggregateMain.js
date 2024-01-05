@@ -22,6 +22,6 @@ const combinedData = Array.from(allTaxValues).map(tax => {
 });
 
 // Save the combined data as output
-fs.writeFileSync('output/combined_data.json', JSON.stringify(combinedData, null, 2));
+fs.writeFileSync('output/data.json', JSON.stringify(combinedData, null, 2));
 
-console.log('Combined data saved to output/combined_data.json');
+console.log('Combined data saved to output/data.json');
