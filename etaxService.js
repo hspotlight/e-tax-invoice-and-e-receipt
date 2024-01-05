@@ -1,5 +1,5 @@
 const axios = require("axios");
-const mockData = require("./rawdata/data.json");
+const mockData = require("./rawdata/data_efilling.json");
 const eTaxRdUrl =
   "https://efiling.rd.go.th/rd-questionnaire-service/etax/search";
 
@@ -31,8 +31,8 @@ const getAllRecords = async () => {
       tax: d.nid,
       name:
         d.entrepreneurName && d.entrepreneurName !== "-"
-          ? d.entrepreneurName
-          : d.companyName,
+          ? d.entrepreneurName.trim().replace(/\s+/, " ")
+          : d.companyName.trim().replace(/\s+/, " "),
       isVat: d.vatFlag,
       docTaxInvoiceFlag: d.docTaxInvoiceFlag,
       docRecieptFlag: d.docTaxInvoiceFlag,
@@ -42,6 +42,7 @@ const getAllRecords = async () => {
       isicCode: d.isicCode,
       isicName: d.isicName,
       sourceFlag: d.sourceFlag,
+      source: "e-filling"
     };
   });
 };

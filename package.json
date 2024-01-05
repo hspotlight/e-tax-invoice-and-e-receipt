@@ -7,7 +7,7 @@
   "author": "HSpotlight (Pakawat Anekwiroj)",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node efillingIndex.js"
   },
   "dependencies": {
     "algoliasearch": "^4.22.0",
