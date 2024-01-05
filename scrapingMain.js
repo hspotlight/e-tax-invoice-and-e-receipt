@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const fs = require("node:fs");
 
 const base_url = "https://interapp3.rd.go.th/signed_inter/publish/register.php";
-const total_pages = 81;
+const total_pages = 88;
 
 const rawData = [];
 
@@ -39,6 +39,7 @@ async function scrapeData(pageNumber) {
         if (cellIndex === 4) record["endDateTh"] = text;
         if (cellIndex === 5) record["rdBranch"] = text;
       });
+      record["source"] = "email";
       rawData.push(record);
     });
   } catch (error) {
