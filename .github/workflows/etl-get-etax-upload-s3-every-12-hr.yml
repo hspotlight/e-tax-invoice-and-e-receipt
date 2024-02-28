@@ -1,8 +1,6 @@
 name: Run ETL get e-tax data and upload to s3 every 12 Hours
 
-on:
-  schedule:
-    - cron: '0 */12 * * *'
+on: workflow_dispatch
 
 jobs:
   run-script:
